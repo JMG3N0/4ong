@@ -1,1 +1,7 @@
-#include "raylib.lib"
+#include "raylib.h"
+
+
+void main()
+{
+
+}
