@@ -2,14 +2,13 @@
 #include "raylib.h"
 #include "global.h"
 
-Menu screens;
+Menu screens = Title;
 
 
 
 Menu UpdateState(int option)
 {
-	int MouseX = GetMouseX();
-	int MouseY = GetMouseY();
+	
 
 	switch (screens)
 	{
@@ -39,7 +38,9 @@ Menu UpdateState(int option)
 				}
 				if (MouseY >= ((ScreenHeight / 2) + 30) && MouseY <= ((ScreenHeight / 2) + 25))
 				{
+					EndDrawing();
 					CloseWindow();
+					
 				}
 
 
@@ -68,14 +69,14 @@ Menu UpdateState(int option)
 
 void TitleScreen()
 {
-
-	
+	InitWindow(ScreenWidth, ScreenHeight, "4ong");
+	BeginDrawing();
 	ClearBackground(BLACK);
 
-
+	screens = UpdateState(0);
 	DrawText("4ong", (ScreenWidth / 2), (ScreenHeight / 2), 40, WHITE);
 	DrawText("Press Enter to continue", (ScreenWidth / 2), ((ScreenHeight / 2)+10), 20, WHITE);
-	screens = UpdateState(0);
+	
 }
 
 void MainMenu()
@@ -86,12 +87,47 @@ void MainMenu()
 
 
 	DrawText("4ong", (ScreenWidth / 2), (ScreenHeight / 2), 40, WHITE);
-	DrawText("Play", (ScreenWidth / 2), ((ScreenHeight / 2) + 10), 20, WHITE);
-	DrawText("Credits", (ScreenWidth / 2), ((ScreenHeight / 2) + 20), 20, WHITE);
-	DrawText("Exit Game", (ScreenWidth / 2), ((ScreenHeight / 2) + 30), 20, WHITE);
+	if (MouseY >= ((ScreenHeight / 2) + 10) && MouseY <= ((ScreenHeight / 2) + 15))
+	{
+		DrawText("Play", (ScreenWidth / 2), ((ScreenHeight / 2) + 10), 20, GRAY);
+	}
+	else
+	{
+		DrawText("Play", (ScreenWidth / 2), ((ScreenHeight / 2) + 10), 20, WHITE);
+	}
+	
+	if (((ScreenHeight / 2) + 20) && MouseY <= ((ScreenHeight / 2) + 25))
+	{
+		DrawText("Credits", (ScreenWidth / 2), ((ScreenHeight / 2) + 20), 20, GRAY);
+	}
+	else
+	{
+		DrawText("Credits", (ScreenWidth / 2), ((ScreenHeight / 2) + 20), 20, WHITE);
+	}
+	
+	if (((ScreenHeight / 2) + 30) && MouseY <= ((ScreenHeight / 2) + 25))
+	{
+		DrawText("Exit Game", (ScreenWidth / 2), ((ScreenHeight / 2) + 30), 20, GRAY);
+	}
+	else
+	{
+		DrawText("Exit Game", (ScreenWidth / 2), ((ScreenHeight / 2) + 30), 20, WHITE);
+	}
+	
 
 	
 	screens = UpdateState(0);
 
 	
+}
+
+void GameDetails()
+{
+	int playerCount = 2;
+	int teams[4] = {0,0,0,0};
+
+
+	ClearBackground(BLACK);
+
+	DrawText("How many players are gonna play ?", (ScreenWidth / 2), (ScreenHeight / 2), 30, WHITE);
 }
