@@ -1,6 +1,6 @@
 #include "menu.h"
-#include "raylib.h"
 #include "global.h"
+#include "sl.h"
 
 Menu screens = Title;
 
@@ -13,7 +13,7 @@ Menu UpdateState(int option)
 	switch (screens)
 	{
 	case Title:
-		if (IsKeyPressed(KEY_ENTER))
+		if (slGetKey(SL_KEY_ENTER))
 		{
 			screens = Main;
 			return screens;
@@ -24,7 +24,7 @@ Menu UpdateState(int option)
 		if (MouseX >= (ScreenWidth / 2) && MouseX <= ((ScreenWidth / 2) + 10))
 		{
 
-			if (IsMouseButtonPressed)
+			if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
 			{
 				if (MouseY >= ((ScreenHeight / 2) + 10) && MouseY <= ((ScreenHeight / 2) + 15))
 				{
