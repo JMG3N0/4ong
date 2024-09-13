@@ -39,14 +39,7 @@ Player setPlayer(int number, int team)
 		break;
 	}
 
-	if (team == 1)
-	{
-		player.color = RED;
-	}
-	else
-	{
-		player.color = BLUE;
-	}
+	
 
 	
 	return player;

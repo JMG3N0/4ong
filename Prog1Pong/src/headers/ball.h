@@ -1,5 +1,5 @@
 #pragma once
-#include "raylib.h"
+
 
 struct Ball
 {
@@ -10,7 +10,7 @@ struct Ball
 	int lastCol{};
 	float radius;
 	float speed;
-	Color color;
+
 };
 
 extern Ball ball;

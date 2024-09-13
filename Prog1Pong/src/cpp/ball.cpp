@@ -1,11 +1,11 @@
 #include "ball.h"
 #include "global.h"
 
-Ball ball;
 
-Ball setBall()
+
+ Ball setBall()
 {
-	ball.color = WHITE;
+	Ball ball;
 	ball.initPosX = (ScreenWidth/2);
 	ball.initPosY = (ScreenHeight/2);
 	ball.posX = ball.initPosX;

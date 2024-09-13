@@ -10,7 +10,6 @@ struct Player
 	int team;
 	float points;
 	bool multiplier;
-	Color color;
 };
 
 Player setPlayer(int number, int team);

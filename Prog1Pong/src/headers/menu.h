@@ -11,7 +11,7 @@
  Menu UpdateState(int option);
  void TitleScreen();
  void MainMenu();
- void SelectScreen();
- void PauseGame();
- void GameEnd();
+ //void SelectScreen();
+// void PauseGame();
+// void GameEnd();
 

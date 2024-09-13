@@ -13,40 +13,41 @@ Menu UpdateState(int option)
 	switch (screens)
 	{
 	case Title:
+		TitleScreen();
 		if (slGetKey(SL_KEY_ENTER))
 		{
 			screens = Main;
 			return screens;
 		}
+		
 		break;
 	case Main:
 
-		if (MouseX >= (ScreenWidth / 2) && MouseX <= ((ScreenWidth / 2) + 10))
+		MainMenu();
+		/*if (slGetMouseX() >= ((ScreenWidth / 2) + 10) && slGetMouseX() <= ((ScreenWidth / 2) - 10) && slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
 		{
 
-			if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
-			{
-				if (MouseY >= ((ScreenHeight / 2) + 10) && MouseY <= ((ScreenHeight / 2) + 15))
+			
+				if (slGetMouseY() >= ((ScreenHeight / 2) + 10) && slGetMouseY() <= ((ScreenHeight / 2) + 15))
 				{
 					screens = Game;
 					return screens;
 				}
-				if (MouseY >= ((ScreenHeight / 2) + 20) && MouseY <= ((ScreenHeight / 2) + 25))
+				if (slGetMouseY() >= ((ScreenHeight / 2) + 20) && slGetMouseY() <= ((ScreenHeight / 2) + 25))
 				{
 					screens = Credits;
 					return screens;
 				}
-				if (MouseY >= ((ScreenHeight / 2) + 30) && MouseY <= ((ScreenHeight / 2) + 25))
+				if (slGetMouseY() >= ((ScreenHeight / 2) + 30) && slGetMouseY() <= ((ScreenHeight / 2) + 25))
 				{
-					EndDrawing();
-					CloseWindow();
+					slClose();
 					
 				}
 
 
-			}
+			
 
-		}
+		}*/
 		
 		break;
 	case Game:
@@ -65,58 +66,71 @@ Menu UpdateState(int option)
 	default:
 		break;
 	}
+	
 }
 
 void TitleScreen()
 {
-	InitWindow(ScreenWidth, ScreenHeight, "4ong");
-	BeginDrawing();
-	ClearBackground(BLACK);
-
-	screens = UpdateState(0);
-	DrawText("4ong", (ScreenWidth / 2), (ScreenHeight / 2), 40, WHITE);
-	DrawText("Press Enter to continue", (ScreenWidth / 2), ((ScreenHeight / 2)+10), 20, WHITE);
+	
+	slSetBackColor(0.0,0.0, 0.0);
+	slSetForeColor(1.0, 1.0, 1.0, 1.0);
+	slSetFontSize(24);
+	slText(((ScreenWidth / 2)- 50), (ScreenHeight / 2), "4ong");
+	slSetFontSize(14);
+	slText(((ScreenWidth / 2)-50), ((ScreenHeight / 2) - 50), "Press Enter to continue");
+	
 	
 }
 
 void MainMenu()
 {
+	//int MouseX = slGetMouseX();
+	
+	
+	slSetBackColor(0.0, 0.0, 0.0);
+	slSetForeColor(1.0, 1.0, 1.0, 1.0);
+	slSetFontSize(24);
+	slText(((ScreenWidth / 2) - 50), (ScreenHeight / 2), "4ong");
 
 
-	ClearBackground(BLACK);
-
-
-	DrawText("4ong", (ScreenWidth / 2), (ScreenHeight / 2), 40, WHITE);
-	if (MouseY >= ((ScreenHeight / 2) + 10) && MouseY <= ((ScreenHeight / 2) + 15))
+	/*slSetFontSize(14);
+	if (slGetMouseY() >= ((ScreenHeight / 2) + 10) && slGetMouseY() <= ((ScreenHeight / 2) + 15) && slGetMouseX() >= ((ScreenWidth / 2) +10) && slGetMouseX() <= ((ScreenWidth / 2) - 10))
 	{
-		DrawText("Play", (ScreenWidth / 2), ((ScreenHeight / 2) + 10), 20, GRAY);
+		slSetForeColor(0.95, 0.95, 0.95, 1.0);
+		slText((ScreenWidth / 2), ((ScreenHeight / 2) + 10), "Play");
+		slSetForeColor(1.0, 1.0, 1.0, 1.0);
 	}
 	else
 	{
-		DrawText("Play", (ScreenWidth / 2), ((ScreenHeight / 2) + 10), 20, WHITE);
+		slText((ScreenWidth / 2), ((ScreenHeight / 2) + 10), "Play");
 	}
 	
-	if (((ScreenHeight / 2) + 20) && MouseY <= ((ScreenHeight / 2) + 25))
+	if (slGetMouseY() >= ((ScreenHeight / 2) + 20) && slGetMouseY() <= ((ScreenHeight / 2) + 25) && slGetMouseX() >= ((ScreenWidth / 2) + 10) && slGetMouseX() <= ((ScreenWidth / 2) - 10))
 	{
-		DrawText("Credits", (ScreenWidth / 2), ((ScreenHeight / 2) + 20), 20, GRAY);
+		slSetForeColor(0.95, 0.95, 0.95, 1.0);
+		slText((ScreenWidth / 2), ((ScreenHeight / 2) + 20), "Credits");
+		slSetForeColor(1.0, 1.0, 1.0, 1.0);
 	}
 	else
 	{
-		DrawText("Credits", (ScreenWidth / 2), ((ScreenHeight / 2) + 20), 20, WHITE);
+		slText((ScreenWidth / 2), ((ScreenHeight / 2) + 20), "Credits");
 	}
 	
-	if (((ScreenHeight / 2) + 30) && MouseY <= ((ScreenHeight / 2) + 25))
+	if (slGetMouseY() >= ((ScreenHeight / 2) + 30) && slGetMouseY() <= ((ScreenHeight / 2) + 25) && slGetMouseX() >= ((ScreenWidth / 2) + 10) && slGetMouseX() <= ((ScreenWidth / 2) - 10))
 	{
-		DrawText("Exit Game", (ScreenWidth / 2), ((ScreenHeight / 2) + 30), 20, GRAY);
+		slSetForeColor(0.95, 0.95, 0.95, 1.0);
+		slText((ScreenWidth / 2), ((ScreenHeight / 2) + 30), "Exit Game");
+		slSetForeColor(1.0, 1.0, 1.0, 1.0);
 	}
 	else
 	{
-		DrawText("Exit Game", (ScreenWidth / 2), ((ScreenHeight / 2) + 30), 20, WHITE);
-	}
+		slText((ScreenWidth / 2), ((ScreenHeight / 2) + 30), "Exit Game");
+	}*/
 	
 
 	
-	screens = UpdateState(0);
+	
+
 
 	
 }
@@ -125,9 +139,29 @@ void GameDetails()
 {
 	int playerCount = 2;
 	int teams[4] = {0,0,0,0};
+	char playerCountChar = static_cast<char>(playerCount);
+	slSetTextAlign(SL_ALIGN_CENTER);
+	slSetBackColor(0.0, 0.0, 0.0);
+	slSetForeColor(1.0, 1.0, 1.0, 1.0);
+	slSetFontSize(14);
+	slText((ScreenWidth / 2), ((ScreenHeight / 2) +20), "How many players are there ?");
+	slSetFontSize(24);
+	slText((ScreenWidth / 2), ((ScreenHeight / 2)),"<" "playerCountChar" ">");
+	slSetFontSize(14);
+	slText((ScreenWidth / 2)-20, ((ScreenHeight / 2) - 50), "Press Enter to continue");
 
+	if (slGetMouseButton(SL_KEY_LEFT) && playerCount > 1)
+	{
+		playerCount--;
+	}
+	if (slGetMouseButton(SL_KEY_RIGHT) && playerCount < 4)
+	{
+		playerCount++;
+	}
 
-	ClearBackground(BLACK);
-
-	DrawText("How many players are gonna play ?", (ScreenWidth / 2), (ScreenHeight / 2), 30, WHITE);
+	if (slGetKey(SL_KEY_ENTER))
+	{
+		
+	}
+	
 }
