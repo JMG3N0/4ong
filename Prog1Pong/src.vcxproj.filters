@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{d00d9d3c-e7e2-4612-aca3-d8e8db04523e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CPP">
+      <UniqueIdentifier>{23801701-5114-4632-bbea-0b1983f46c95}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\headers\ball.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\global.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\menu.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\headers\player.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\cpp\ball.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\game.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\main.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\menu.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cpp\player.cpp">
+      <Filter>CPP</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

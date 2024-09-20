@@ -12,7 +12,8 @@
 	ball.posY = ball.initPosY;
 	ball.radius = 30;
 	ball.lastCol = { };
-	ball.speed = 10;
+	ball.initSpeed = 10;
+	ball.speed = ball.initSpeed;
 	
 
 	return ball;

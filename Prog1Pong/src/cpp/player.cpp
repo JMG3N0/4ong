@@ -12,26 +12,26 @@ Player setPlayer(int number, int team)
 	switch (number)
 	{
 	case 1:
-		player.posY = (ScreenHeight / 2);
-		player.posX = 50;
+		player.initPosY = (ScreenHeight / 2);
+		player.initPosX = 50;
 		player.height = 100;
 		player.width = 100;
 		break;
 	case 2:
-		player.posY = (ScreenHeight / 2);
-		player.posX = (ScreenWidth - 50);
+		player.initPosY = (ScreenHeight / 2);
+		player.initPosX = (ScreenWidth - 50);
 		player.height = 100;
 		player.width = 100;
 		break;
 	case 3:
-		player.posY = 50;
-		player.posX = (ScreenHeight / 2);
+		player.initPosY = 50;
+		player.initPosX = (ScreenHeight / 2);
 		player.height = 50;
 		player.width = 400;
 		break;
 	case 4:
-		player.posY = (ScreenHeight - 50);
-		player.posX = (ScreenHeight / 2);
+		player.initPosY = (ScreenHeight - 50);
+		player.initPosX = (ScreenHeight / 2);
 		player.height = 50;
 		player.width = 400;
 		break;
@@ -39,7 +39,8 @@ Player setPlayer(int number, int team)
 		break;
 	}
 
-	
+	player.posX = player.initPosX;
+	player.posY = player.initPosY;
 
 	
 	return player;

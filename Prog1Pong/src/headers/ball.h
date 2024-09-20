@@ -10,7 +10,7 @@ struct Ball
 	int lastCol{};
 	float radius;
 	float speed;
-
+	float initSpeed;
 };
 
 extern Ball ball;
