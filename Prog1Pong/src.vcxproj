@@ -147,10 +147,11 @@
       <AdditionalDependencies>sigil.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\sigil-vc2015\sigil.dll" "$(OutDir)" 
-copy "$(SolutionDir)lib\sigil-vc2015\wrap_oal.dll" "$(OutDir)" 
-copy "$(SolutionDir)lib\sigil-vc2015\OpenAL32.dll" "$(OutDir)" 
-copy "$(SolutionDir)lib\sigil-vc2015\glew32.dll" "$(OutDir)" </Command>
+      <Command>copy "$(SolutionDir)lib\sigil-vc2015\sigil.dll" "$(OutDir)" /y
+copy "$(SolutionDir)lib\sigil-vc2015\wrap_oal.dll" "$(OutDir)" /y
+copy "$(SolutionDir)lib\sigil-vc2015\OpenAL32.dll" "$(OutDir)" /y 
+copy "$(SolutionDir)lib\sigil-vc2015\glew32.dll" "$(OutDir)" /y
+xcopy "$(SolutionDir)res" "$(OutDir)" /i /y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy DLL</Message>
@@ -190,10 +191,11 @@ copy "$(SolutionDir)lib\sigil-vc2015\glew32.dll" "$(OutDir)" </Command>
       <AdditionalDependencies>sigil.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)lib\sigil-vc2015\sigil.dll" "$(OutDir)" 
-copy "$(SolutionDir)lib\sigil-vc2015\wrap_oal.dll" "$(OutDir)" 
-copy "$(SolutionDir)lib\sigil-vc2015\OpenAL32.dll" "$(OutDir)" 
-copy "$(SolutionDir)lib\sigil-vc2015\glew32.dll" "$(OutDir)" </Command>
+      <Command>copy "$(SolutionDir)lib\sigil-vc2015\sigil.dll" "$(OutDir)" /y
+copy "$(SolutionDir)lib\sigil-vc2015\wrap_oal.dll" "$(OutDir)" /y
+copy "$(SolutionDir)lib\sigil-vc2015\OpenAL32.dll" "$(OutDir)" /y 
+copy "$(SolutionDir)lib\sigil-vc2015\glew32.dll" "$(OutDir)" /y
+xcopy "$(SolutionDir)res" "$(OutDir)" /i /y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy DLL</Message>

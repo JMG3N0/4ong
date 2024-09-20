@@ -6,14 +6,16 @@
 
 int main()
 {
-	
+	int playerNumb = 2;
+
 	slWindow(ScreenWidth, ScreenHeight, "4ong", false);
-	slSetFont(slLoadFont("white_rabbit.ttf"), 24);
+	slSetFont(slLoadFont("res/white_rabbit.ttf"), 24);
 	slSetTextAlign(SL_ALIGN_CENTER);
+
 
 	while (!slShouldClose() && !slGetKey(SL_KEY_ESCAPE))
 	{
-		screens = UpdateState(0);
+		screens = UpdateState(playerNumb);
 	
 		slRender();
 	}

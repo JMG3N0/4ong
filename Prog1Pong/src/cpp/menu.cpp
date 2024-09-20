@@ -1,16 +1,18 @@
 #include "menu.h"
 #include "global.h"
 #include "sl.h"
+#include <string>
+#include <iostream>
 
 Menu screens = Title;
+Menu StartGame(int PlayerNumb);
 
-
-
+using namespace std;
 
 
 void TitleScreen()
 {
-	
+
 	slSetBackColor(0.0,0.0, 0.0);
 	slSetForeColor(1.0, 1.0, 1.0, 1.0);
 	slSetFontSize(24);
@@ -34,9 +36,9 @@ void MainMenu()
 	slSetFontSize(14);
 	if (slGetMouseY() >= ((ScreenHeight / 2) - 25) && slGetMouseY() <= ((ScreenHeight / 2) -10) && slGetMouseX() >= ((ScreenWidth / 2) - 70) && slGetMouseX() <= ((ScreenWidth / 2) ))
 	{
-		slSetForeColor(0.95, 0.95, 0.95, 1.0);
+
 		slText((ScreenWidth / 2) - 60, ((ScreenHeight / 2) - 20), "> Play");
-		slSetForeColor(1.0, 1.0, 1.0, 1.0);
+
 	}
 	else
 	{
@@ -45,9 +47,9 @@ void MainMenu()
 	
 	if (slGetMouseY() >= ((ScreenHeight / 2) - 40) && slGetMouseY() <= ((ScreenHeight / 2) - 30) && slGetMouseX() >= ((ScreenWidth / 2) - 70) && slGetMouseX() <= ((ScreenWidth / 2)))
 	{
-		slSetForeColor(0.95, 0.95, 0.95, 1.0);
+
 		slText((ScreenWidth / 2) - 60, ((ScreenHeight / 2) - 35), "> Credits");
-		slSetForeColor(1.0, 1.0, 1.0, 1.0);
+
 	}
 	else
 	{
@@ -56,9 +58,9 @@ void MainMenu()
 	
 	if (slGetMouseY() >= ((ScreenHeight / 2) - 55) && slGetMouseY() <= ((ScreenHeight / 2) - 45) && slGetMouseX() >= ((ScreenWidth / 2) - 70) && slGetMouseX() <= ((ScreenWidth / 2)))
 	{
-		slSetForeColor(0.95, 0.95, 0.95, 1.0);
+
 		slText((ScreenWidth / 2) - 60, ((ScreenHeight / 2) - 50), "> Exit Game");
-		slSetForeColor(1.0, 1.0, 1.0, 1.0);
+
 	}
 	else
 	{
@@ -73,42 +75,57 @@ void MainMenu()
 	
 }
 
-void PreGame()
+int PlayerNumb(int numb)
 {
-	int playerCount = 2;
-	int teams[4] = {0,0,0,0};
-	char playerCountChar = static_cast<char>(playerCount);
+	int playerCount = numb;
+	string playerCountString = to_string(playerCount);
+	const char* playerCountChar = playerCountString.c_str();
 	slSetBackColor(0.0, 0.0, 0.0);
 	slSetForeColor(1.0, 1.0, 1.0, 1.0);
 
 	slSetFontSize(14);
-	slText((ScreenWidth / 2), ((ScreenHeight / 2) +20), "How many players are there ?");
+	slText((ScreenWidth / 2 - 10), ((ScreenHeight / 2) +20), "How many players are there ?");
 	slSetFontSize(24);
-	slText((ScreenWidth / 2), ((ScreenHeight / 2)),"playerCountChar");
-	/*slText((ScreenWidth / 2), ((ScreenHeight / 2)),"<"  ">");
-	slText((ScreenWidth / 2), ((ScreenHeight / 2)),"<"  ">");*/
+	slText((ScreenWidth / 2) - 25, ((ScreenHeight / 2)- 15), playerCountChar);
+	slText(((ScreenWidth / 2)-75), ((ScreenHeight / 2)-15),"<");
+	slText(((ScreenWidth / 2)+25), ((ScreenHeight / 2)-15),">");
 	slSetFontSize(14);
-	slText((ScreenWidth / 2)-20, ((ScreenHeight / 2) - 50), "Press Enter to continue");
+	slText((ScreenWidth / 2)+70, ((ScreenHeight / 2) - 50), "Next");
 
-	if (slGetMouseButton(SL_KEY_LEFT) && playerCount > 1)
+	/*if (slGetMouseY() >= -20 && slGetMouseY() <= -10)
 	{
-		playerCount--;
-	}
-	if (slGetMouseButton(SL_KEY_RIGHT) && playerCount < 4)
-	{
-		playerCount++;
-	}
-
-	/*if (slGetKey(SL_KEY_ENTER))
-	{
+		if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
+		{
+			if (playerCount > 2 && slGetMouseX() >= -80 && slGetMouseX() <= -70)
+			{
+				playerCount--;
+			}
+			else if (playerCount < 4 && slGetMouseX() >= 30 && slGetMouseX() <= 20)
+			{
+				playerCount++;
+			}
+		}
 		
 	}*/
 	
+	if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
+	{
+		playerCount++;
+	}
+	if (slGetMouseButton(SL_MOUSE_BUTTON_RIGHT))
+	{
+		playerCount--;
+	}
+
+	return playerCount;
+	
+	
+	
 }
 
-Menu UpdateState(int option)
+Menu UpdateState(int& numb)
 {
-
+	
 
 	switch (screens)
 	{
@@ -153,11 +170,17 @@ Menu UpdateState(int option)
 
 	case Game:
 
-		PreGame();
+		numb = PlayerNumb(numb);
+		
+		if (slGetKey(SL_KEY_ENTER))
+		{
+			screens = StartGame(numb);
+		}
+		
 
 		break;
 	case Pause:
-		if (option)
+		if (numb)
 		{
 
 		}
@@ -169,6 +192,7 @@ Menu UpdateState(int option)
 	default:
 		break;
 	}
+
 	return screens;
 
 }

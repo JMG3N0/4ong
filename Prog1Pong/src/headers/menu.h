@@ -5,10 +5,10 @@
 {
 	 Title = 0, Main, Game, Pause, Post, Credits
 };
-
+ 
  extern Menu screens;
 
- Menu UpdateState(int option);
+ Menu UpdateState(int& numb);
  void TitleScreen();
  void MainMenu();
  //void SelectScreen();
