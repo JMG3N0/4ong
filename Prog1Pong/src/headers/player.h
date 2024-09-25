@@ -1,5 +1,6 @@
 #pragma once
 #include "sl.h"
+#include "ball.h"
 
 struct Player
 {
@@ -10,10 +11,14 @@ struct Player
 	int height;
 	int width;
 	int team;
-	float points;
-	bool multiplier;
+	int hitPoints;
+	float multiplier;
+	bool isAlive;
 };
 
-Player setPlayer(int number, int team);
+Player setPlayer(int number, int team, bool alive);
+Player* PlayerTeams(struct Player* P, int numb, float frames);
+int ColissionPB(Player P, Ball ball);
+int PlayerNumb(int numb, float frames);
 
 

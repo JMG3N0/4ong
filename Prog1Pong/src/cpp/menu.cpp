@@ -1,11 +1,12 @@
 #include "menu.h"
 #include "global.h"
-#include "sl.h"
-#include <string>
-#include <iostream>
+
+
+
+
 
 Menu screens = Title;
-Menu StartGame(int PlayerNumb);
+Menu StartGame(int PlayerNumb, struct Player* P, Ball& ball);
 
 using namespace std;
 
@@ -75,55 +76,7 @@ void MainMenu()
 	
 }
 
-int PlayerNumb(int numb)
-{
-	int playerCount = numb;
-	string playerCountString = to_string(playerCount);
-	const char* playerCountChar = playerCountString.c_str();
-	slSetBackColor(0.0, 0.0, 0.0);
-	slSetForeColor(1.0, 1.0, 1.0, 1.0);
-
-	slSetFontSize(14);
-	slText((ScreenWidth / 2 - 10), ((ScreenHeight / 2) +20), "How many players are there ?");
-	slSetFontSize(24);
-	slText((ScreenWidth / 2) - 25, ((ScreenHeight / 2)- 15), playerCountChar);
-	slText(((ScreenWidth / 2)-75), ((ScreenHeight / 2)-15),"<");
-	slText(((ScreenWidth / 2)+25), ((ScreenHeight / 2)-15),">");
-	slSetFontSize(14);
-	slText((ScreenWidth / 2)+70, ((ScreenHeight / 2) - 50), "Next");
-
-	/*if (slGetMouseY() >= -20 && slGetMouseY() <= -10)
-	{
-		if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
-		{
-			if (playerCount > 2 && slGetMouseX() >= -80 && slGetMouseX() <= -70)
-			{
-				playerCount--;
-			}
-			else if (playerCount < 4 && slGetMouseX() >= 30 && slGetMouseX() <= 20)
-			{
-				playerCount++;
-			}
-		}
-		
-	}*/
-	
-	if (slGetMouseButton(SL_MOUSE_BUTTON_LEFT))
-	{
-		playerCount++;
-	}
-	if (slGetMouseButton(SL_MOUSE_BUTTON_RIGHT))
-	{
-		playerCount--;
-	}
-
-	return playerCount;
-	
-	
-	
-}
-
-Menu UpdateState(int& numb)
+Menu UpdateState(int& numb, float frames, struct Player* P, int& menuChoice, Ball& ball)
 {
 	
 
@@ -169,13 +122,31 @@ Menu UpdateState(int& numb)
 		break;
 
 	case Game:
-
-		numb = PlayerNumb(numb);
-		
-		if (slGetKey(SL_KEY_ENTER))
+		switch (menuChoice)
 		{
-			screens = StartGame(numb);
+		case 1:
+			numb = PlayerNumb(numb, frames);
+			if (slGetKey(SL_KEY_ENTER))
+			{
+				menuChoice = 2;
+			}
+			break;
+		case 2:
+			
+			P = PlayerTeams(P, numb, frames);
+			
+			if (slGetKey(SL_KEY_ENTER) && P[0].hitPoints > 0)
+			{
+				menuChoice = 3;
+			}
+			break;
+		case 3:
+			screens = StartGame(numb, P, ball);
+			break;
+		default:
+			break;
 		}
+	
 		
 
 		break;

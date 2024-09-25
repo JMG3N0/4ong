@@ -8,11 +8,13 @@ struct Ball
 	int initPosX;
 	int posX;
 	int lastCol{};
-	float radius;
-	float speed;
+	int width;
+	int height;
+	float speedY;
+	float speedX;
 	float initSpeed;
 };
 
-extern Ball ball;
+
 
 Ball setBall();
